@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {StatusBar, StyleSheet, Text, View} from 'react-native';
+
+import appsFlyer from 'react-native-appsflyer';
+import {useEffect, useState} from "react";
+
+
+// import {initializeLibs} from "./src/libs";
+import axios from "axios";
+import {PreloaderPage} from "./src/pages/PreloaderPage";
+import {ViewPage} from "./src/pages/CurrentTask";
+import {AppPage} from "./src/pages/app-pages/AppPage";
+import {COLORS} from "./src/colors";
+import {Provider, useDispatch} from "react-redux";
+import {store} from "./src/store";
+import {getCategoriesData} from "./src/store/listsSlice";
+import {MainLayout} from "./src/layouts/MainLayout";
+
+
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+ return (
+   <Provider store={store} >
+      <MainLayout/>
+   </Provider>
+ )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
